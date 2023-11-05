@@ -12,7 +12,7 @@ header {
   justify-content: space-between;
   align-items: center;
 
-  h1 {
+  h2 {
     font-size: 1.2rem;
     letter-spacing: 0.2rem;
   }
@@ -42,7 +42,7 @@ header {
     border-radius: 20px 0 0 20px;
     padding: $general-padding;
 
-    // display: none;
+    display: none;
 
     li {
       margin-bottom: 26px;

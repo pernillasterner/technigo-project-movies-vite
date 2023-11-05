@@ -7,7 +7,7 @@ export const Header = () => {
         <nav className="navbar">
           <div className="menu-header">
             <div className="navbar-brand">
-              <h1>CINEMATIC</h1>
+              <h2>CINEMATIC</h2>
             </div>
             {/* When is-active show submenu */}
             <div className="hamburger is-active">
