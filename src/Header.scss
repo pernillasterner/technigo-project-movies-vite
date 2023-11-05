@@ -1,0 +1,59 @@
+@import "variables";
+
+header {
+  background-color: $secondary-color;
+  padding: 0 $general-padding;
+  position: relative;
+}
+
+.menu-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 33px;
+    height: 2px;
+    margin-bottom: 5px;
+    position: relative;
+    background-color: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+
+    // display: none;
+
+    &:nth-child(2) {
+      width: 25px;
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: $opacity;
+    border-radius: 20px 0 0 20px;
+    padding: $general-padding;
+
+    // display: none;
+
+    li {
+      margin-bottom: 26px;
+      margin-right: 60px;
+      margin-left: 60px;
+
+      a {
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+    }
+  }
+}
