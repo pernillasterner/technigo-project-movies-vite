@@ -1,3 +1,4 @@
+@import "variables";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500;600;700;800&family=Poppins:wght@100;300;400;700;900&display=swap");
 :root {
   margin: 0;
@@ -6,22 +7,7 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --general-padding: 35px;
-  --general-smaller-padding: 20px;
-  --general-mini-padding: 5px;
-  --box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
-  --main-width-mobile: 90%;
-  --main-width-desktop: 70%;
-  --hover-color: rgb(255, 199, 220);
 }
-
-////////////////////////////////////////////////////////////////
-/// VARIABLES
-///
-/// colors
-$primary-text: #f7f7f7;
-$bg-dark: #15121f;
-$opacity: rgba(0, 0, 0, 0.8);
 
 body {
   margin: 0;
@@ -29,7 +15,18 @@ body {
   box-sizing: border-box;
   background-color: $bg-dark;
   color: $primary-text;
+  font-family: "Montserrat", "Poppins", "Helvetica Neue";
   font-size: 1.25rem;
   line-height: 1.6;
   overflow-x: hidden !important;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-text;
+}
+
+ul li {
+  list-style: none;
 }
