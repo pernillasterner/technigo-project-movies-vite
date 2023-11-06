@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import "./MovieList.scss";
 
 export const MovieList = ({ popularMovies, secureBaseUrl, imageSize }) => {
-  console.log(popularMovies);
   return (
     <section className="movieListContainer">
       {/* should be able to change depending on category */}
@@ -18,7 +17,7 @@ export const MovieList = ({ popularMovies, secureBaseUrl, imageSize }) => {
         <>
           <Link to={`/movie/${movie.id}`}>
             <img
-              src={`${secureBaseUrl}${imageSize[3]}${movie.poster_path}`}
+              src={`${secureBaseUrl}${imageSize.poster_sizes[3]}${movie.poster_path}`}
               alt={movie.title}
               className="movieImg"
               key={movie.id}

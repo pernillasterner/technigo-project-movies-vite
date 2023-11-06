@@ -1,7 +1,6 @@
 import "./Hero.scss";
 
 export const Hero = ({ popularMovies, secureBaseUrl, imageSize }) => {
-  console.log(popularMovies);
   return (
     <section
       className="hero"
