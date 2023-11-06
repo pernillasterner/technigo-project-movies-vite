@@ -1,11 +1,12 @@
 .movieListContainer {
+  // padding: var(--general-smaller-padding);
   display: flex;
   flex-wrap: wrap;
-  padding: var(--general-mini-padding);
   h2.title {
-    padding: var(--general-mini-padding) var(--general-smaller-padding);
-    font-size: 1rem;
     width: 100%;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 0.8rem;
   }
 
   a {
@@ -13,48 +14,44 @@
     cursor: pointer;
     padding: var(--general-smaller-padding);
     position: relative;
+    overflow: hidden;
 
     img {
       width: 100%;
       border-radius: 50px;
       opacity: 0.6;
-      transition: 1s ease-in-out;
+      transition: 0.5s ease-in-out;
 
       &:hover {
         opacity: 0.9;
       }
     }
   }
-
   .details {
     position: absolute;
     bottom: 60px;
-    left: 50px;
+    left: 30px;
 
     h3.title {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
 
     .date {
       font-size: 0.9rem;
     }
   }
-
   @media (min-width: 370px) {
-    .movieListContainer {
-      padding: var(--general-padding);
-    }
-    h2.title {
-      font-size: 1.3rem;
-    }
     a {
       width: 50%;
     }
   }
-
   @media (min-width: 570px) {
     a {
       width: 33.33%;
+    }
+    h2.title {
+      padding: var(--general-smaller-padding);
+      text-align: start;
     }
   }
 
@@ -64,3 +61,28 @@
     }
   }
 }
+
+//   @media (min-width: 370px) {
+//     .movieListContainer {
+//       padding: var(--general-padding);
+//     }
+//     h2.title {
+//       // font-size: 1.3rem;
+//     }
+//     a {
+//       width: 50%;
+//     }
+//   }
+
+//   @media (min-width: 570px) {
+//     a {
+//       width: 33.33%;
+//     }
+//   }
+
+//   @media (min-width: 820px) {
+//     a {
+//       width: 25%;
+//     }
+//   }
+// }

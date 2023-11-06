@@ -1,112 +1,35 @@
-import { Link } from "react-router-dom";
+/**
+ * 1. URL using the secure_base_url + size + path from the API response.
+ * 2. Use w342 for size
+ */
 
+import { Link } from "react-router-dom";
 import "./MovieList.scss";
 
-export const MovieList = () => {
+export const MovieList = ({ popularMovies, secureBaseUrl, imageSize }) => {
+  console.log(popularMovies);
   return (
     <section className="movieListContainer">
       {/* should be able to change depending on category */}
       <h2 className="title">most popular</h2>
 
-      <Link to="/movie/234">
-        <img
-          src="https://images4.alphacoders.com/929/929236.jpg"
-          alt="Muzzle"
-          width={360}
-          height={440}
-          className="movieImg"
-        />
-        <div className="details">
-          <h3 className="title">muzzle</h3>
-          <p className="date">2023-09-12</p>
-        </div>
-      </Link>
-      <Link to="/movie/234">
-        <img
-          src="https://images4.alphacoders.com/929/929236.jpg"
-          alt="Muzzle"
-          width={360}
-          height={440}
-        />
-        <div className="details">
-          <h3 className="title">muzzle</h3>
-          <p className="date">2023-09-12</p>
-        </div>
-      </Link>
-      <Link to="/movie/234">
-        <img
-          src="https://images4.alphacoders.com/929/929236.jpg"
-          alt="Muzzle"
-          width={360}
-          height={440}
-        />
-        <div className="details">
-          <h3 className="title">muzzle</h3>
-          <p className="date">2023-09-12</p>
-        </div>
-      </Link>
-      <Link to="/movie/234">
-        <img
-          src="https://images4.alphacoders.com/929/929236.jpg"
-          alt="Muzzle"
-          width={360}
-          height={440}
-        />
-        <div className="details">
-          <h3 className="title">muzzle</h3>
-          <p className="date">2023-09-12</p>
-        </div>
-      </Link>
-
-      <Link to="/movie/234">
-        <img
-          src="https://images4.alphacoders.com/929/929236.jpg"
-          alt="Muzzle"
-          width={360}
-          height={440}
-          className="movieImg"
-        />
-        <div className="details">
-          <h3 className="title">muzzle</h3>
-          <p className="date">2023-09-12</p>
-        </div>
-      </Link>
-      <Link to="/movie/234">
-        <img
-          src="https://images4.alphacoders.com/929/929236.jpg"
-          alt="Muzzle"
-          width={360}
-          height={440}
-        />
-        <div className="details">
-          <h3 className="title">muzzle</h3>
-          <p className="date">2023-09-12</p>
-        </div>
-      </Link>
-      <Link to="/movie/234">
-        <img
-          src="https://images4.alphacoders.com/929/929236.jpg"
-          alt="Muzzle"
-          width={360}
-          height={440}
-        />
-        <div className="details">
-          <h3 className="title">muzzle</h3>
-          <p className="date">2023-09-12</p>
-        </div>
-      </Link>
-      <Link to="/movie/234">
-        <img
-          src="https://images4.alphacoders.com/929/929236.jpg"
-          alt="Muzzle"
-          width={360}
-          height={440}
-        />
-        <div className="details">
-          <h3 className="title">muzzle</h3>
-          <p className="date">2023-09-12</p>
-        </div>
-      </Link>
+      {/* Add id to link */}
+      {popularMovies.map((movie) => (
+        <>
+          <Link to={`/movie/${movie.id}`}>
+            <img
+              src={`${secureBaseUrl}${imageSize[3]}${movie.poster_path}`}
+              alt={movie.title}
+              className="movieImg"
+              key={movie.id}
+            />
+            <div className="details">
+              <h3 className="title">{movie.title}</h3>
+              <p className="date">{movie.release_date}</p>
+            </div>
+          </Link>
+        </>
+      ))}
     </section>
   );
 };
