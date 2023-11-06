@@ -20,9 +20,26 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    padding: var(--general-padding);
 
     h1.movieTitle {
-      font-size: 8rem;
+      font-size: 4rem;
+    }
+    .movieBy,
+    .storyBy {
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    @media (min-width: 570px) {
+      h1.movieTitle {
+        font-size: 8rem;
+      }
+
+      .movieBy,
+      .storyBy {
+        font-size: 1.2rem;
+      }
     }
   }
 }

@@ -1,8 +1,10 @@
 .movieListContainer {
   display: flex;
   flex-wrap: wrap;
-  .title {
-    font-size: 1.3rem;
+  padding: var(--general-mini-padding);
+  h2.title {
+    padding: var(--general-mini-padding) var(--general-smaller-padding);
+    font-size: 1rem;
     width: 100%;
   }
 
@@ -29,7 +31,7 @@
     bottom: 60px;
     left: 50px;
 
-    .title {
+    h3.title {
       font-size: 1.5rem;
     }
 
@@ -39,6 +41,12 @@
   }
 
   @media (min-width: 370px) {
+    .movieListContainer {
+      padding: var(--general-padding);
+    }
+    h2.title {
+      font-size: 1.3rem;
+    }
     a {
       width: 50%;
     }
