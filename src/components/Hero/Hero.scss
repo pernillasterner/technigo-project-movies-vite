@@ -1,0 +1,28 @@
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100vh;
+    background-color: var(--opacity-dark);
+    position: absolute;
+  }
+
+  .movieContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    h1.movieTitle {
+      font-size: 8rem;
+    }
+  }
+}
