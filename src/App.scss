@@ -1,4 +1,4 @@
-@import "variables";
+@import "./styles/variables.scss";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500;600;700;800&family=Poppins:wght@100;300;400;700;900&display=swap");
 
 * {
@@ -30,6 +30,12 @@ body {
 a {
   text-decoration: none;
   color: $primary-text;
+  &:hover {
+    color: $secondary-color;
+  }
+  &.active {
+    text-decoration: underline;
+  }
 }
 
 ul li {
