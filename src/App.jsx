@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "../src/components/Header/Header";
 import { Home } from "./pages/Home";
-import { MovieDetails } from "./pages/MovieDetails";
+import { MovieDetailPage } from "./pages/MovieDetailPage";
 
 export const App = () => {
   return (
@@ -9,7 +9,7 @@ export const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<MovieDetails />} />
+        <Route path="/movie/:movieId" element={<MovieDetailPage />} />
       </Routes>
     </BrowserRouter>
   );
