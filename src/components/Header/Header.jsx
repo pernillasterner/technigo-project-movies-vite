@@ -31,12 +31,7 @@ export const Header = () => {
               <span></span>
             </div>
             <ul className={`dropdown ${isActive ? "is-active" : ""}`}>
-              <li className="dropdown-link">
-                {/* Use NavLink to set clicked a tag to active */}
-                <a href="#" role="button">
-                  home
-                </a>
-              </li>
+              {/* Use NavLink to set clicked a tag to active */}
               <li className="dropdown-link">
                 <a href="#" role="button">
                   action
