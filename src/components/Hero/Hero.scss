@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -21,6 +22,7 @@
     align-items: center;
     position: relative;
     padding: var(--general-padding);
+    // display: none;
 
     h1.movieTitle {
       font-size: 4rem;

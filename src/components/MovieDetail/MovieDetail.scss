@@ -1,0 +1,54 @@
+.movieDetailContainer {
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: var(--general-smaller-padding);
+  align-items: center;
+
+  img {
+    width: 100%;
+  }
+
+  .movieInfo {
+    padding-top: var(--general-smaller-padding);
+
+    h2 {
+      font-size: 1.5rem;
+    }
+    .description {
+      font-size: 0.7rem;
+      word-break: break-all;
+      text-transform: capitalize;
+    }
+  }
+}
+
+@media (min-width: 370px) {
+  .movieDetailContainer {
+    padding: var(--general-padding);
+  }
+}
+@media (min-width: 570px) {
+  .movieDetailContainer {
+    padding-bottom: 0;
+    flex-direction: row;
+    top: initial;
+    align-items: end;
+
+    img {
+      width: 200%;
+    }
+  }
+
+  .movieInfo {
+    padding: 0 var(--general-padding);
+  }
+}
+
+//   @media (min-width: 820px) {
+//     a {
+//       width: 25%;
+//     }
+//   }

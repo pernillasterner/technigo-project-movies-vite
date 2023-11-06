@@ -9,11 +9,13 @@ export const Hero = () => {
           "url('https://images4.alphacoders.com/929/929236.jpg')",
       }}
     >
+      {/* Display if homepage */}
       <div className="movieContainer">
         <p className="movieBy">A MOVIE by Matthew</p>
         <h1 className="movieTitle">venom</h1>
         <p className="storyBy">STORY INSPIRED BY SOMETHING OR SOMEBODY</p>
       </div>
+      {/* Display if homepage */}
     </section>
   );
 };
