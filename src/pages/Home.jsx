@@ -37,16 +37,20 @@ export const Home = () => {
 
   return (
     <>
-      <Hero
-        popularMovies={popularMovies}
-        secureBaseUrl={secureBaseUrl}
-        imageSize={imageSize}
-      />
-      <MovieList
-        popularMovies={popularMovies}
-        secureBaseUrl={secureBaseUrl}
-        imageSize={imageSize}
-      />
+      {imageSize && imageSize.backdrop_sizes && (
+        <Hero
+          popularMovies={popularMovies}
+          secureBaseUrl={secureBaseUrl}
+          imageSize={imageSize}
+        />
+      )}
+      {imageSize && imageSize.poster_sizes && (
+        <MovieList
+          popularMovies={popularMovies}
+          secureBaseUrl={secureBaseUrl}
+          imageSize={imageSize}
+        />
+      )}
     </>
   );
 };
