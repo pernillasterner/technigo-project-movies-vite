@@ -7,16 +7,18 @@
 
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 
   &::before {
     content: "";
     width: 100%;
     height: 100vh;
-    background-color: var(--opacity-dark);
+    background-color: var(--opacity-light);
     position: absolute;
   }
 
   .movieContainer {
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +27,8 @@
     // display: none;
 
     h1.movieTitle {
-      font-size: 4rem;
+      text-align: center;
+      font-size: 2rem;
     }
     .movieBy,
     .storyBy {
@@ -35,7 +38,7 @@
 
     @media (min-width: 570px) {
       h1.movieTitle {
-        font-size: 8rem;
+        font-size: 5rem;
       }
 
       .movieBy,
