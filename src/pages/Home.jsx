@@ -26,7 +26,7 @@ export const Home = () => {
         const resMovieImages = await fetch(movieImgAPI);
         const movieImagesData = await resMovieImages.json();
         setSecureBaseUrl(movieImagesData.images.secure_base_url);
-        setImageSize(movieImagesData.images.poster_sizes);
+        setImageSize(movieImagesData.images);
         // return data;
       } catch (err) {
         console.error("Failed to fetch Popular Movies", err);
@@ -37,7 +37,11 @@ export const Home = () => {
 
   return (
     <>
-      <Hero />
+      <Hero
+        popularMovies={popularMovies}
+        secureBaseUrl={secureBaseUrl}
+        imageSize={imageSize}
+      />
       <MovieList
         popularMovies={popularMovies}
         secureBaseUrl={secureBaseUrl}
