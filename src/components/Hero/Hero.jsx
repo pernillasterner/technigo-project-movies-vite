@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
 import "./Hero.scss";
 
-export const Hero = ({ popularMovies, secureBaseUrl }) => {
-  const imageSize = "w1280";
+export const Hero = ({ popularMovies, secureBaseUrl, imageSizes }) => {
+  const imageSize = imageSizes.heroSize;
   const posterPath = popularMovies.poster_path;
   const baseUrl = secureBaseUrl;
   const movieTitle = popularMovies.title;
