@@ -6,8 +6,8 @@
 import { Link } from "react-router-dom";
 import "./MovieList.scss";
 
-export const MovieList = ({ popularMovies, secureBaseUrl }) => {
-  const imageSize = "w342";
+export const MovieList = ({ popularMovies, secureBaseUrl, imageSizes }) => {
+  const imageSize = imageSizes.posterSize;
 
   return (
     <section className="movieListContainer">
