@@ -9,7 +9,10 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 
 export const App = () => {
   const [popularMovies, setPopularMovies] = useState([]);
-  // const [imageSizes, setImageSizes] = useState([]);
+  const [imageSizes, setImageSizes] = useState({
+    heroSize: "w1280",
+    posterSize: "w342",
+  });
   const [secureBaseUrl, setSecureBaseUrl] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -55,12 +58,21 @@ export const App = () => {
           element={
             <Home
               popularMovies={popularMovies}
-              // imageSizes={imageSizes}
+              imageSizes={imageSizes}
               secureBaseUrl={secureBaseUrl}
             />
           }
         />
-        <Route path="/movie/:movieId" element={<MovieDetailPage />} />
+        <Route
+          path="/movie/:movieId"
+          element={
+            <MovieDetailPage
+              popularMovies={popularMovies}
+              imageSizes={imageSizes}
+              secureBaseUrl={secureBaseUrl}
+            />
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
