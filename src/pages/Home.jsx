@@ -7,15 +7,19 @@
 import { Hero } from "../components/Hero/Hero";
 import { MovieList } from "../components/MovieList/MovieList";
 
-export const Home = ({ popularMovies, secureBaseUrl }) => {
+export const Home = ({ popularMovies, secureBaseUrl, imageSizes }) => {
   return (
     <>
       <Hero
         popularMovies={popularMovies[0]}
         secureBaseUrl={secureBaseUrl}
-        // imageSizes={imageSizes}
+        imageSizes={imageSizes}
       />
-      <MovieList popularMovies={popularMovies} secureBaseUrl={secureBaseUrl} />
+      <MovieList
+        popularMovies={popularMovies}
+        secureBaseUrl={secureBaseUrl}
+        imageSizes={imageSizes}
+      />
     </>
   );
 };
