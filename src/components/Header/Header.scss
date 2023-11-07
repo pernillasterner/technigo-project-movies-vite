@@ -1,9 +1,13 @@
 header {
-  // background-color: $opacity-dark;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.8) 80%
+  );
   padding: var(--general-smaller-padding) var(--general-padding);
   position: fixed;
   width: 100%;
-  z-index: 9999;
+  z-index: 8888;
 }
 
 .menu-header {
@@ -57,6 +61,7 @@ header {
     overflow: hidden;
     opacity: 0;
     transition: all 0.6s ease-in-out 0.2s;
+    z-index: 8888;
 
     li {
       margin: 1em 3em;
