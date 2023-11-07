@@ -24,7 +24,8 @@
     align-items: center;
     position: relative;
     padding: var(--general-padding);
-    // display: none;
+    // Remove
+    display: none;
 
     h1.movieTitle {
       text-align: center;
@@ -38,12 +39,17 @@
 
     @media (min-width: 570px) {
       h1.movieTitle {
-        font-size: 5rem;
+        font-size: 4rem;
       }
 
       .movieBy,
       .storyBy {
         font-size: 1.2rem;
+      }
+    }
+    @media (min-width: 870px) {
+      h1.movieTitle {
+        font-size: 5rem;
       }
     }
   }
