@@ -1,22 +1,24 @@
 import { useLocation } from "react-router-dom";
 import "./Hero.scss";
 
-export const Hero = ({ movie, secureBaseUrl, imageSizes }) => {
-  const imageSize = imageSizes.backdrop_sizes[2]; //"w1280"
-  const posterPath = movie.poster_path;
+export const Hero = ({ popularMovies, secureBaseUrl }) => {
+  const imageSize = "w1280";
+  const posterPath = popularMovies.poster_path;
+  const baseUrl = secureBaseUrl;
+  const movieTitle = popularMovies.title;
   const isHomePage = location.pathname === "/";
 
   return (
     <section
       className="hero"
       style={{
-        backgroundImage: `url(${secureBaseUrl}${imageSize}${posterPath})`,
+        backgroundImage: `url(${baseUrl}${imageSize}${posterPath})`,
       }}
     >
       {isHomePage && (
         <div className="movieContainer">
           <p className="movieBy">A MOVIE by Matthew</p>
-          <h1 className="movieTitle">{movie.title}</h1>
+          <h1 className="movieTitle">{movieTitle}</h1>
           <p className="storyBy">STORY INSPIRED BY SOMETHING OR SOMEBODY</p>
         </div>
       )}
