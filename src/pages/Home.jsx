@@ -12,6 +12,7 @@ export const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [imageSizes, setImageSizes] = useState([]);
   const [secureBaseUrl, setSecureBaseUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +24,7 @@ export const Home = () => {
         setPopularMovies(movies);
         setImageSizes(images);
         setSecureBaseUrl(images.secure_base_url);
+        setIsLoading(false);
       } catch (err) {
         console.error("Error fetching data", err);
       }
@@ -31,10 +33,14 @@ export const Home = () => {
     fetchData();
   }, []);
 
+  if (isLoading) {
+    return <p>Loading...</p>; // Render a loading message or spinner while data is fetching
+  }
+
   return (
     <>
       <Hero
-        movie={popularMovies}
+        movie={popularMovies[0]}
         secureBaseUrl={secureBaseUrl}
         imageSizes={imageSizes}
       />
