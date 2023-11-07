@@ -1,27 +1,33 @@
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+// import { fetchPopularMovies, fetchImageSizes } from "../api/movieApi";
 import { Hero } from "../Hero/Hero";
 import "./MovieDetail.scss";
 
-export const MovieDetail = () => {
+export const MovieDetail = ({ popularMovies, secureBaseUrl, imageSizes }) => {
+  const { movieId } = useParams();
+
+  // Search for a matching movie
+  const movieMatch = popularMovies.find(
+    (movie) => movie.id === Number(movieId)
+  );
+  console.log(movieMatch);
+  const baseUrl = secureBaseUrl;
+  const imageSize = imageSizes.posterSize;
+  const posterPath = movieMatch.poster_path;
+
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
       <div className="movieDetailContainer">
         <img
-          src="https://images4.alphacoders.com/929/929236.jpg"
-          alt="Muzzle"
-          width={260}
-          height={340}
+          src={`${baseUrl}${imageSize}${posterPath}`}
+          alt={movieMatch.title}
           className="movieImg"
         />
         <div className="movieInfo">
-          <h2>Venom</h2>
-          <p className="description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-            quas nesciunt culpa expedita labore rerum, ratione voluptatibus unde
-            reiciendis adipisci, ad fuga! Tempora laboriosam error accusamus
-            ducimus provident reiciendis molestias.
-          </p>
+          <h2>{movieMatch.title}</h2>
+          <p className="description">{movieMatch.overview}</p>
         </div>
       </div>
     </>
