@@ -6,7 +6,7 @@
 import { Link } from "react-router-dom";
 import "./MovieList.scss";
 
-export const MovieList = ({ popularMovies, secureBaseUrl, imageSize }) => {
+export const MovieList = ({ popularMovies, secureBaseUrl, imageSizes }) => {
   return (
     <section className="movieListContainer">
       <div className="titleContainer">
@@ -18,7 +18,7 @@ export const MovieList = ({ popularMovies, secureBaseUrl, imageSize }) => {
         <div key={movie.id} className="movieWrapper">
           <Link to={`/movie/${movie.id}`}>
             <img
-              src={`${secureBaseUrl}${imageSize.poster_sizes[3]}${movie.poster_path}`}
+              src={`${secureBaseUrl}${imageSizes.poster_sizes[3]}${movie.poster_path}`}
               alt={movie.title}
               className="movieImg"
             />
