@@ -13,12 +13,13 @@ export const MovieDetail = ({ movie }) => {
 
   const baseUrl = "https://image.tmdb.org/t/p/w342";
   const imageUrl = `${baseUrl}${movie.poster_path}`;
-  // Check if the movie has production companies
 
   return (
     <>
       <div className="movieDetailContainer">
-        <img src={`${imageUrl}`} alt={movie.title} className="movieImg" />
+        <Link to={movie.homepage}>
+          <img src={`${imageUrl}`} alt={movie.title} className="movieImg" />
+        </Link>
         <div className="movieInfo">
           <h2>{movie.title}</h2>
           <p className="vote_average">⭐️ {movie.vote_average}</p>
