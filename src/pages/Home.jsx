@@ -1,20 +1,35 @@
 import { useState, useEffect } from "react";
-import { fetchPopularMovies } from "../api/movieApi";
+import { useParams } from "react-router-dom";
+import { fetchPopularMovies, fetchMovieDetails } from "../api/movieApi";
 import { Hero } from "../components/Hero/Hero";
 import { MovieList } from "../components/MovieList/MovieList";
 
 export const Home = () => {
-  const [selectedCat, setSelectedCat] = useState("popular");
-  const [movies, setMovies] = useState([]); // Initialize with an empty array
+  const [selectedGenre, setSelectedGenre] = useState("popular");
+  const [movies, setMovies] = useState([]);
+  const [details, setDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const { genre } = useParams();
+  console.log(genre);
+  console.log(movies);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const popularMovies = await fetchPopularMovies();
+        const [popularMovies] = await Promise.all([fetchPopularMovies()]);
         setMovies(popularMovies);
-        setIsLoading(false); // Data is loaded
+
+        // Check if popularMovies is not empty and has a movie
+        if (popularMovies.length > 0) {
+          const movieId = popularMovies[0].id;
+
+          // Fetch movie details using the movie ID
+          const movieDetails = await fetchMovieDetails(movieId);
+          setDetails(movieDetails);
+        }
+
+        setIsLoading(false);
       } catch (err) {
         setError(err.message);
         setIsLoading(false);
@@ -34,13 +49,13 @@ export const Home = () => {
     return <p>Error: {error}</p>;
   }
 
-  const movieTitle = movies[0]?.title; // Use optional chaining to avoid errors
-  const posterPath = movies[0]?.poster_path; // Use optional chaining to avoid errors
+  const movieTitle = movies[0]?.title;
+  const posterPath = movies[0]?.poster_path;
 
   return (
     <>
-      <Hero title={movieTitle} posterPath={posterPath} />
-      <MovieList movies={movies} selectedCat={selectedCat} />
+      <Hero title={movieTitle} posterPath={posterPath} details={details} />
+      <MovieList movies={movies} />
     </>
   );
 };
