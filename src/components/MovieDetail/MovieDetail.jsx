@@ -22,7 +22,9 @@ export const MovieDetail = ({ movie }) => {
         </Link>
         <div className="summary">
           <h2>{movie.title}</h2>
-          <p className="voteAverage">⭐️ {movie.vote_average}</p>
+          <p className="voteAverage">
+            ⭐️ {parseFloat(movie.vote_average).toFixed(2)}
+          </p>
           <p className="description">{movie.overview}</p>
           <div className="moreInfo">
             <h4>
