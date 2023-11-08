@@ -14,8 +14,6 @@ export const MovieDetail = ({ movie }) => {
   const baseUrl = "https://image.tmdb.org/t/p/w342";
   const imageUrl = `${baseUrl}${movie.poster_path}`;
 
-  // console.log(movie.production_companies);
-
   return (
     <>
       <div className="movieDetailContainer">
@@ -32,14 +30,14 @@ export const MovieDetail = ({ movie }) => {
               More details
             </h4>
             <ul className="prodCompany">
-              {movie.production_companies.map((prod) => {
-                return <li>{prod.name}</li>;
-              })}
+              {movie.production_companies.map((prod) => (
+                <li>{prod.name}</li>
+              ))}
             </ul>
             <ul className="lang">
-              {movie.spoken_languages.map((lang) => {
-                return <li>{lang.name}</li>;
-              })}
+              {movie.spoken_languages.map((lang) => (
+                <li>{lang.name}</li>
+              ))}
             </ul>
           </div>
         </div>
