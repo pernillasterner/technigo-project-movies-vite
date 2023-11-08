@@ -14,16 +14,34 @@ export const MovieDetail = ({ movie }) => {
   const baseUrl = "https://image.tmdb.org/t/p/w342";
   const imageUrl = `${baseUrl}${movie.poster_path}`;
 
+  // console.log(movie.production_companies);
+
   return (
     <>
       <div className="movieDetailContainer">
         <Link to={movie.homepage} target="_blank">
           <img src={`${imageUrl}`} alt={movie.title} className="movieImg" />
         </Link>
-        <div className="movieInfo">
+        <div className="summary">
           <h2>{movie.title}</h2>
-          <p className="vote_average">⭐️ {movie.vote_average}</p>
+          <p className="voteAverage">⭐️ {movie.vote_average}</p>
           <p className="description">{movie.overview}</p>
+          <div className="moreInfo">
+            <h4>
+              <img src="../../assets/down-arrow.svg" alt="Arrow Down" />
+              More details
+            </h4>
+            <ul className="prodCompany">
+              {movie.production_companies.map((prod) => {
+                return <li>{prod.name}</li>;
+              })}
+            </ul>
+            <ul className="lang">
+              {movie.spoken_languages.map((lang) => {
+                return <li>{lang.name}</li>;
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </>
