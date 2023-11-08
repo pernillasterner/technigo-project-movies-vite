@@ -1,6 +1,6 @@
 /**
  * 1. Show menu when clicking on hamburger 🍿
- * 2. The active site should be marked
+ * 2. The active site should be marked 🍿
  * 3. If you click on M the menu should open 🍿
  * 4. Make the menu transform from 0% to 100%
  */
@@ -33,24 +33,16 @@ export const Header = () => {
             <ul className={`dropdown ${isActive ? "is-active" : ""}`}>
               {/* Use NavLink to set clicked a tag to active */}
               <li className="dropdown-link">
-                <a href="#" role="button">
-                  action
-                </a>
+                <NavLink to="/action">action</NavLink>
               </li>
               <li className="dropdown-link">
-                <a href="#" role="button">
-                  drama
-                </a>
+                <NavLink to="/drama">drama</NavLink>
               </li>
               <li className="dropdown-link">
-                <a href="#" role="button">
-                  horror
-                </a>
+                <NavLink to="/horror">horror</NavLink>
               </li>
               <li className="dropdown-link">
-                <a href="#" role="button">
-                  comedy
-                </a>
+                <NavLink to="/comedy">comedy</NavLink>
               </li>
             </ul>
           </div>
