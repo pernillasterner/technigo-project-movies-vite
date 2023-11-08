@@ -6,21 +6,23 @@
 import { Link } from "react-router-dom";
 import "./MovieList.scss";
 
-export const MovieList = ({ popularMovies, secureBaseUrl, imageSizes }) => {
-  const imageSize = imageSizes.posterSize;
+export const MovieList = ({ movies, selectedCat }) => {
+  const baseUrl = "https://image.tmdb.org/t/p/w342";
+
+  // Add different subtitle depending on category
 
   return (
     <section className="movieListContainer">
       <div className="titleContainer">
-        <h2 className="title">popular</h2>
+        <h2 className="title">{selectedCat}</h2>
         <p className="subtitle">The most popular movies at the moment</p>
       </div>
       {/* Add id to link */}
-      {popularMovies.map((movie) => (
+      {movies.map((movie) => (
         <div key={movie.id} className="movieWrapper">
           <Link to={`/movie/${movie.id}`}>
             <img
-              src={`${secureBaseUrl}${imageSize}${movie.poster_path}`}
+              src={`${baseUrl}${movie.poster_path}`}
               alt={movie.title}
               className="movieImg"
             />
