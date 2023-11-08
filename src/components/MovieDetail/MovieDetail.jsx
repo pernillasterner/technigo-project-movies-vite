@@ -17,7 +17,7 @@ export const MovieDetail = ({ movie }) => {
   return (
     <>
       <div className="movieDetailContainer">
-        <Link to={movie.homepage}>
+        <Link to={movie.homepage} target="_blank">
           <img src={`${imageUrl}`} alt={movie.title} className="movieImg" />
         </Link>
         <div className="movieInfo">
