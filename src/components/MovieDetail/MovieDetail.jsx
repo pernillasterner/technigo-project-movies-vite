@@ -23,7 +23,7 @@ export const MovieDetail = ({ movie }) => {
         <div className="summary">
           <h2>{movie.title}</h2>
           <p className="voteAverage">
-            ⭐️ {parseFloat(movie.vote_average).toFixed(2)}
+            ⭐️ {parseFloat(movie.vote_average).toFixed(1)}
           </p>
           <p className="description">{movie.overview}</p>
           <div className="moreInfo">
