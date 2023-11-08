@@ -1,33 +1,28 @@
-import { useParams } from "react-router-dom";
+/**
+ * Fetch data for the selected movie and pass it to the Hero adn movie details
+ */
+import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { fetchPopularMovies, fetchImageSizes } from "../api/movieApi";
-import { Hero } from "../Hero/Hero";
 import "./MovieDetail.scss";
 
-export const MovieDetail = ({ popularMovies, secureBaseUrl, imageSizes }) => {
-  const { movieId } = useParams();
-
+export const MovieDetail = ({ movie }) => {
   // Search for a matching movie
-  const movieMatch = popularMovies.find(
-    (movie) => movie.id === Number(movieId)
-  );
+  // const movieMatch = popularMovies.find(
+  //   (movie) => movie.id === Number(movieId)
+  // );
 
-  const baseUrl = secureBaseUrl;
-  const imageSize = imageSizes.posterSize;
-  const posterPath = movieMatch.poster_path;
+  const baseUrl = "https://image.tmdb.org/t/p/w342";
+  const imageUrl = `${baseUrl}${movie.poster_path}`;
+  // Check if the movie has production companies
 
   return (
     <>
-      {/* <Hero /> */}
       <div className="movieDetailContainer">
-        <img
-          src={`${baseUrl}${imageSize}${posterPath}`}
-          alt={movieMatch.title}
-          className="movieImg"
-        />
+        <img src={`${imageUrl}`} alt={movie.title} className="movieImg" />
         <div className="movieInfo">
-          <h2>{movieMatch.title}</h2>
-          <p className="description">{movieMatch.overview}</p>
+          <h2>{movie.title}</h2>
+          <p className="vote_average">⭐️ {movie.vote_average}</p>
+          <p className="description">{movie.overview}</p>
         </div>
       </div>
     </>
