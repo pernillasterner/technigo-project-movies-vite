@@ -11,7 +11,7 @@ export const MovieDetail = ({ popularMovies, secureBaseUrl, imageSizes }) => {
   const movieMatch = popularMovies.find(
     (movie) => movie.id === Number(movieId)
   );
-  console.log(movieMatch);
+
   const baseUrl = secureBaseUrl;
   const imageSize = imageSizes.posterSize;
   const posterPath = movieMatch.poster_path;

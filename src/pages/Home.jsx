@@ -8,10 +8,13 @@ import { Hero } from "../components/Hero/Hero";
 import { MovieList } from "../components/MovieList/MovieList";
 
 export const Home = ({ popularMovies, secureBaseUrl, imageSizes }) => {
+  // console.log(popularMovies);
+  // console.log(secureBaseUrl);
+  // console.log(imageSizes);
   return (
     <>
       <Hero
-        popularMovies={popularMovies[0]}
+        popularMovies={popularMovies}
         secureBaseUrl={secureBaseUrl}
         imageSizes={imageSizes}
       />

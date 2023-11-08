@@ -42,7 +42,6 @@ export const App = () => {
   //   return <p>Loading...</p>;
   // }
 
-  console.log(popularMovies);
   // const mainProps = {
   //   popularMovies: popularMovies,
   //   imageSizes: imageSizes,
