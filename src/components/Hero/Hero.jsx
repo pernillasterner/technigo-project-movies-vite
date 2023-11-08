@@ -2,23 +2,27 @@ import { useLocation } from "react-router-dom";
 import "./Hero.scss";
 
 export const Hero = ({ popularMovies, secureBaseUrl, imageSizes }) => {
-  const imageSize = imageSizes.heroSize;
-  const posterPath = popularMovies.poster_path;
-  const baseUrl = secureBaseUrl;
-  const movieTitle = popularMovies.title;
+  // const imageSize = imageSizes.heroSize;
+  const posterPath = popularMovies[0].poster_path;
+  // const baseUrl = secureBaseUrl;
+  // const movieTitle = movie.title;
+  // console.log(posterPath);
+  // console.log(secureBaseUrl);
+  // console.log(imageSizes.heroSize);
+  const url = `https://image.tmdb.org/t/p/w1280${posterPath}`;
   const isHomePage = location.pathname === "/";
-
+  // backgroundImage: `url(${baseUrl}${imageSizes.heroSize}${popularMovies[0].posterPath})`,
   return (
     <section
       className="hero"
       style={{
-        backgroundImage: `url(${baseUrl}${imageSize}${posterPath})`,
+        backgroundImage: `url(${url})`,
       }}
     >
-      {isHomePage && (
+      {isHomePage && popularMovies.length > 0 && (
         <div className="movieContainer">
           <p className="movieBy">A MOVIE by Matthew</p>
-          <h1 className="movieTitle">{movieTitle}</h1>
+          <h1 className="movieTitle">{popularMovies[0].title}</h1>
           <p className="storyBy">STORY INSPIRED BY SOMETHING OR SOMEBODY</p>
         </div>
       )}
