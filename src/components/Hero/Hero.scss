@@ -1,3 +1,15 @@
+@keyframes blink {
+  0% {
+    border-color: white;
+  }
+  50% {
+    border-color: rgb(10, 10, 61);
+  }
+  100% {
+    border-color: white;
+  }
+}
+
 .hero {
   height: 100vh;
   display: flex;
@@ -8,21 +20,21 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  box-shadow: 0 0 50px #656565;
 
-  &::before {
-    content: "";
-    width: 100%;
-    height: 100vh;
-    background-color: var(--opacity-light);
-    position: absolute;
-  }
+  // &::before {
+  //   content: "";
+  //   width: 100%;
+  //   height: 100vh;
+  //   background-color: var(--opacity-light);
+  //   position: absolute;
+  // }
 
   .movieContainer {
     max-width: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
     padding: var(--general-padding);
 
     h1.movieTitle {
@@ -35,6 +47,23 @@
       text-align: center;
     }
 
+    .genres {
+      position: absolute;
+      bottom: 30px;
+      a {
+        font-size: 0.8rem;
+        padding: var(--general-mini-padding);
+        border-bottom: 1px solid #aaaaaa;
+        margin: 0 0.5em;
+        color: #d0d0d0;
+        transition: 0.1s ease-in-out;
+        animation: blink 4s linear infinite;
+        &:hover {
+          font-weight: 600;
+        }
+      }
+    }
+
     @media (min-width: 570px) {
       h1.movieTitle {
         font-size: 4rem;
@@ -43,6 +72,14 @@
       .movieBy,
       .storyBy {
         font-size: 1.2rem;
+      }
+
+      .genres {
+        margin-top: 20px;
+        a {
+          margin: 1em;
+          font-size: 1rem;
+        }
       }
     }
     @media (min-width: 870px) {
