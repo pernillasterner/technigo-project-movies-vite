@@ -13,9 +13,13 @@ export const MovieList = ({ movies, genreTitle }) => {
     <section className="movieListContainer">
       <div className="titleContainer">
         <h2 className="title">{genreTitle}</h2>
-        <p className="subtitle">The most popular movies at the moment</p>
+
+        <p className="subtitle">
+          {genreTitle !== "popular"
+            ? `The most popular ${genreTitle} movies at the moment`
+            : "The most popular movies at the moment"}
+        </p>
       </div>
-      {/* Add id to link */}
       {movies.map((movie) => (
         <div key={movie.id} className="movieWrapper">
           <Link to={`/movie/${movie.id}`}>
