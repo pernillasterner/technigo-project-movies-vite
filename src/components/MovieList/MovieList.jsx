@@ -10,31 +10,35 @@ export const MovieList = ({ movies, genreTitle }) => {
 
   // Add different subtitle depending on category
   return (
-    <section className="movieListContainer">
-      <div className="titleContainer">
-        <h2 className="title">{genreTitle}</h2>
+    <>
+      {movies.length > 0 ? (
+        <section className="movieListContainer">
+          <div className="titleContainer">
+            <h2 className="title">{genreTitle}</h2>
 
-        <p className="subtitle">
-          {genreTitle !== "popular"
-            ? `The most popular ${genreTitle} movies at the moment`
-            : "The most popular movies at the moment"}
-        </p>
-      </div>
-      {movies.map((movie) => (
-        <div key={movie.id} className="movieWrapper">
-          <Link to={`/movie/${movie.id}`}>
-            <img
-              src={`${baseUrl}${movie.poster_path}`}
-              alt={movie.title}
-              className="movieImg"
-            />
-            <div className="details">
-              <h3 className="title">{movie.title}</h3>
-              <p className="date">{movie.release_date}</p>
+            <p className="subtitle">
+              {genreTitle !== "popular"
+                ? `The most popular ${genreTitle} movies at the moment`
+                : "The most popular movies at the moment"}
+            </p>
+          </div>
+          {movies.map((movie) => (
+            <div key={movie.id} className="movieWrapper">
+              <Link to={`/movie/${movie.id}`}>
+                <img
+                  src={`${baseUrl}${movie.poster_path}`}
+                  alt={movie.title}
+                  className="movieImg"
+                />
+                <div className="details">
+                  <h3 className="title">{movie.title}</h3>
+                  <p className="date">{movie.release_date}</p>
+                </div>
+              </Link>
             </div>
-          </Link>
-        </div>
-      ))}
-    </section>
+          ))}
+        </section>
+      ) : null}
+    </>
   );
 };
