@@ -1,6 +1,6 @@
 // Time to fetch data from the server
 const TMDB_KEY = import.meta.env.VITE_TMDB_KEY;
-const API_KEY = `"?api_key=${TMDB_KEY}`;
+const API_KEY = `?api_key=${TMDB_KEY}`;
 const BASE__URL = "https://api.themoviedb.org/3/movie/popular";
 const API_LANG = "&language=en-US&page=1";
 const IMAGE__URL = "https://api.themoviedb.org/3/configuration";
