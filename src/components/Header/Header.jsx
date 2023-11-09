@@ -71,7 +71,7 @@ export const Header = () => {
               {filteredGenres.map((genre) => (
                 <li className="dropdown-link" key={genre.id} id={genre.id}>
                   <NavLink
-                    to={`/${genre.name.toLowerCase()}`}
+                    to={`/${genre.name.toLowerCase()}/${genre.id}`}
                     onClick={handleDropdown}
                   >
                     {genre.name}
