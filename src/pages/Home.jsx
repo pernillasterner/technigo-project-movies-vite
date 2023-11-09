@@ -7,6 +7,7 @@ import {
 } from "../api/movieApi";
 import { Hero } from "../components/Hero/Hero";
 import { MovieList } from "../components/MovieList/MovieList";
+import { LoaderSpinner } from "../components/Loader/LoaderSpinner";
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -25,6 +26,7 @@ export const Home = () => {
           fetchPopularMovies(),
           fetchGenresList(),
         ]);
+
         setMovies(popularMovies);
 
         // Check if popularMovies is not empty and has a movie
@@ -64,10 +66,10 @@ export const Home = () => {
       setMovieTitle(updatedMovies[0]?.title);
       setPosterPath(updatedMovies[0]?.poster_path);
     }
-  }, [movies, genre]);
+  }, [movies, genre, genre_id]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoaderSpinner />;
   }
 
   if (error) {
