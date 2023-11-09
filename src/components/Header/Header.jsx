@@ -2,18 +2,54 @@
  * 1. Show menu when clicking on hamburger 🍿
  * 2. The active site should be marked 🍿
  * 3. If you click on M the menu should open 🍿
- * 4. Make the menu transform from 0% to 100%
+ * 4. Make the menu transform from 0% to 100% 🍿
  */
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchGenresList } from "../../api/movieApi";
 import "./Header.scss";
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
+  const [genresList, setGenresList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const selectedGenres = ["action", "horror", "drama", "comedy", "adventure"];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const movieGenresList = await fetchGenresList();
+        setGenresList(movieGenresList.genres);
+        setIsLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setIsLoading(false);
+      }
+    };
+
+    if (isLoading) {
+      fetchData();
+    }
+  }, [isLoading]);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   const handleDropdown = () => {
     setIsActive(!isActive);
   };
+
+  const filteredGenres = genresList.filter((genre) => {
+    // Convert both to lowercase
+    const lowerCaseGenreName = genre.name.toLowerCase();
+    return selectedGenres.includes(lowerCaseGenreName);
+  });
 
   return (
     <>
@@ -32,18 +68,16 @@ export const Header = () => {
             </div>
             <ul className={`dropdown ${isActive ? "is-active" : ""}`}>
               {/* Use NavLink to set clicked a tag to active */}
-              <li className="dropdown-link">
-                <NavLink to="/action">action</NavLink>
-              </li>
-              <li className="dropdown-link">
-                <NavLink to="/drama">drama</NavLink>
-              </li>
-              <li className="dropdown-link">
-                <NavLink to="/horror">horror</NavLink>
-              </li>
-              <li className="dropdown-link">
-                <NavLink to="/comedy">comedy</NavLink>
-              </li>
+              {filteredGenres.map((genre) => (
+                <li className="dropdown-link" key={genre.id} id={genre.id}>
+                  <NavLink
+                    to={`/${genre.name.toLowerCase()}`}
+                    onClick={handleDropdown}
+                  >
+                    {genre.name}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
         </nav>
