@@ -1,13 +1,11 @@
 // Time to fetch data from the server
-const API_KEY = "?api_key=f0cd5b88d931f2b23bac64656e5fda18";
+const TMDB_KEY = import.meta.env.VITE_TMDB_KEY;
+const API_KEY = `"?api_key=${TMDB_KEY}`;
 const BASE__URL = "https://api.themoviedb.org/3/movie/popular";
 const API_LANG = "&language=en-US&page=1";
 const IMAGE__URL = "https://api.themoviedb.org/3/configuration";
 const DETAILS__URL = "https://api.themoviedb.org/3/movie/";
 const GENRES__URL = "https://api.themoviedb.org/3/genre/movie/list";
-
-// const apiKey = process.env.REACT_APP_API_KEY;
-// console.log(apiKey);
 
 export const fetchPopularMovies = async () => {
   const url = `${BASE__URL}${API_KEY}${API_LANG}`;
