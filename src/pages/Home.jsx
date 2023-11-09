@@ -15,6 +15,8 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { genre = "popular", genre_id } = useParams();
+  const [movieTitle, setMovieTitle] = useState("Oops! No Movies Found");
+  const [posterPath, setPosterPath] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,6 +51,9 @@ export const Home = () => {
   useEffect(() => {
     if (genre === "popular") {
       setFilteredMovies(movies);
+      // I only want to send in the first object
+      setMovieTitle(movies[0]?.title);
+      setPosterPath(movies[0]?.poster_path);
     } else {
       const genreIdNumber = Number(genre_id);
       // Check if the genre_id matches id in movies list
@@ -56,6 +61,8 @@ export const Home = () => {
         movie.genre_ids.some((id) => id === genreIdNumber)
       );
       setFilteredMovies(updatedMovies);
+      setMovieTitle(updatedMovies[0]?.title);
+      setPosterPath(updatedMovies[0]?.poster_path);
     }
   }, [movies, genre]);
 
@@ -66,10 +73,6 @@ export const Home = () => {
   if (error) {
     return <p>Error: {error}</p>;
   }
-
-  // I only want to send in the first object
-  const movieTitle = movies[0]?.title;
-  const posterPath = movies[0]?.poster_path;
 
   return (
     <>
