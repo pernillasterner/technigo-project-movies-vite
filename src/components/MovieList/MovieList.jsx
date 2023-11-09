@@ -7,21 +7,21 @@ import "./MovieList.scss";
 import { useEffect, useState } from "react";
 
 export const MovieList = ({ movies, genreTitle, genreId }) => {
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  // const [filteredMovies, setFilteredMovies] = useState([]);
   const baseUrl = "https://image.tmdb.org/t/p/w342";
 
-  useEffect(() => {
-    if (genreTitle === "popular") {
-      setFilteredMovies(movies);
-    } else {
-      const genreIdNumber = Number(genreId);
-      // Check if the genre_id matches id in movies list
-      const updatedMovies = movies.filter((movie) =>
-        movie.genre_ids.some((id) => id === genreIdNumber)
-      );
-      setFilteredMovies(updatedMovies);
-    }
-  }, [movies, genreTitle]);
+  // useEffect(() => {
+  //   if (genreTitle === "popular") {
+  //     setFilteredMovies(movies);
+  //   } else {
+  //     const genreIdNumber = Number(genreId);
+  //     // Check if the genre_id matches id in movies list
+  //     const updatedMovies = movies.filter((movie) =>
+  //       movie.genre_ids.some((id) => id === genreIdNumber)
+  //     );
+  //     setFilteredMovies(updatedMovies);
+  //   }
+  // }, [movies, genreTitle]);
 
   // Add different subtitle depending on category
   return (
@@ -35,7 +35,7 @@ export const MovieList = ({ movies, genreTitle, genreId }) => {
             : "The most popular movies at the moment"}
         </p>
       </div>
-      {filteredMovies.map((movie) => (
+      {movies.map((movie) => (
         <div key={movie.id} className="movieWrapper">
           <Link to={`/movie/${movie.id}`}>
             <img

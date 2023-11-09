@@ -7,13 +7,11 @@ import {
 } from "../api/movieApi";
 import { Hero } from "../components/Hero/Hero";
 import { MovieList } from "../components/MovieList/MovieList";
-import "./NotFoundPage";
-import { NotFoundPage } from "./NotFoundPage";
 
 export const Home = () => {
-  const [param, setParam] = useState("popular");
   const [movies, setMovies] = useState([]);
   const [details, setDetails] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { genre, genre_id } = useParams();
@@ -48,6 +46,20 @@ export const Home = () => {
     }
   }, [isLoading]);
 
+  console.log(genre);
+  useEffect(() => {
+    if (genre === undefined) {
+      setFilteredMovies(movies);
+    } else {
+      const genreIdNumber = Number(genre_id);
+      // Check if the genre_id matches id in movies list
+      const updatedMovies = movies.filter((movie) =>
+        movie.genre_ids.some((id) => id === genreIdNumber)
+      );
+      setFilteredMovies(updatedMovies);
+    }
+  }, [movies, genre]);
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -56,13 +68,18 @@ export const Home = () => {
     return <p>Error: {error}</p>;
   }
 
+  // I only want to send in the first object
   const movieTitle = movies[0]?.title;
   const posterPath = movies[0]?.poster_path;
 
   return (
     <>
       <Hero title={movieTitle} posterPath={posterPath} details={details} />
-      <MovieList movies={movies} genreTitle={genre} genreId={genre_id} />
+      <MovieList
+        movies={filteredMovies}
+        genreTitle={genre}
+        genreId={genre_id}
+      />
     </>
   );
 };
