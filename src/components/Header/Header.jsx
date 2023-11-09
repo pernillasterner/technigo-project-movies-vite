@@ -14,7 +14,16 @@ export const Header = () => {
   const [genresList, setGenresList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const selectedGenres = ["action", "horror", "drama", "comedy", "adventure"];
+  const selectedGenres = [
+    "action",
+    "horror",
+    "drama",
+    "comedy",
+    "adventure",
+    "thriller",
+    "fantasy",
+    "animation",
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
