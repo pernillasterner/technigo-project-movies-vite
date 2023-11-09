@@ -27,12 +27,37 @@
       background-color: var(--bg-light);
 
       h4 {
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 0.8rem;
         background-color: var(--bg-dark);
         padding: var(--general-smaller-padding);
+        text-transform: capitalize;
+
+        &::before {
+          content: "+";
+          margin-right: 5px;
+        }
+        &:first-child {
+          border-bottom: 1px solid var(--bg-light);
+        }
+        &.is-open {
+          &::before {
+            content: "-";
+            margin-right: 5px;
+          }
+        }
       }
       ul {
         padding: var(--general-smaller-padding);
         display: none;
+        // TODO: fix transition
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+        li {
+          font-size: 0.8rem;
+          display: inline-block;
+        }
       }
     }
   }
