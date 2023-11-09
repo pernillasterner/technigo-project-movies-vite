@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import {
   fetchPopularMovies,
   fetchMovieDetails,
@@ -16,6 +15,7 @@ export const Home = () => {
   const [details, setDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { genre } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,6 +48,14 @@ export const Home = () => {
     }
   }, [isLoading]);
 
+  // Need this because otherwise it will become an infinite loop
+  useEffect(() => {
+    // Update param when genre changes
+    if (genre !== undefined) {
+      setParam(genre);
+    }
+  }, [genre]);
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -58,21 +66,7 @@ export const Home = () => {
 
   const movieTitle = movies[0]?.title;
   const posterPath = movies[0]?.poster_path;
-  const { genre } = useParams();
 
-  if (genre !== undefined) {
-    setParam(genre);
-  }
-
-  const location = useLocation();
-  // console.log(location);
-
-  const fetchGenreId = () => {
-    const location = useLocation();
-    const { id } = location.state;
-    console.log(id);
-  };
-  // fetchGenreId();
   return (
     <>
       <Hero title={movieTitle} posterPath={posterPath} details={details} />
