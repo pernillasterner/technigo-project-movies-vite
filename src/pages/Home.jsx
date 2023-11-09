@@ -14,7 +14,7 @@ export const Home = () => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { genre, genre_id } = useParams();
+  const { genre = "popular", genre_id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,9 +46,8 @@ export const Home = () => {
     }
   }, [isLoading]);
 
-  console.log(genre);
   useEffect(() => {
-    if (genre === undefined) {
+    if (genre === "popular") {
       setFilteredMovies(movies);
     } else {
       const genreIdNumber = Number(genre_id);
@@ -75,11 +74,7 @@ export const Home = () => {
   return (
     <>
       <Hero title={movieTitle} posterPath={posterPath} details={details} />
-      <MovieList
-        movies={filteredMovies}
-        genreTitle={genre}
-        genreId={genre_id}
-      />
+      <MovieList movies={filteredMovies} genreTitle={genre} />
     </>
   );
 };

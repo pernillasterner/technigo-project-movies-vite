@@ -4,24 +4,9 @@
  */
 import { Link } from "react-router-dom";
 import "./MovieList.scss";
-import { useEffect, useState } from "react";
 
-export const MovieList = ({ movies, genreTitle, genreId }) => {
-  // const [filteredMovies, setFilteredMovies] = useState([]);
+export const MovieList = ({ movies, genreTitle }) => {
   const baseUrl = "https://image.tmdb.org/t/p/w342";
-
-  // useEffect(() => {
-  //   if (genreTitle === "popular") {
-  //     setFilteredMovies(movies);
-  //   } else {
-  //     const genreIdNumber = Number(genreId);
-  //     // Check if the genre_id matches id in movies list
-  //     const updatedMovies = movies.filter((movie) =>
-  //       movie.genre_ids.some((id) => id === genreIdNumber)
-  //     );
-  //     setFilteredMovies(updatedMovies);
-  //   }
-  // }, [movies, genreTitle]);
 
   // Add different subtitle depending on category
   return (
