@@ -6,8 +6,7 @@ export const Hero = ({ title, posterPath, details }) => {
   const isHomePage = location.pathname === "/";
   const baseUrl = "https://image.tmdb.org/t/p/w1280";
   const imageUrl = `${baseUrl}${posterPath}`;
-  // const url = `https://image.tmdb.org/t/p/w1280/A4j8S6moJS2zNtRR8oWF08gRnL5.jpg`;
-  console.log(details);
+
   return (
     <section
       className="hero"

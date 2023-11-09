@@ -48,12 +48,12 @@
     }
 
     .genres {
-      position: absolute;
-      bottom: 30px;
+      // position: absolute;
+      // bottom: 30px;
       a {
         font-size: 0.8rem;
         padding: var(--general-mini-padding);
-        border-bottom: 1px solid #aaaaaa;
+        border: 1px solid #aaaaaa;
         margin: 0 0.5em;
         color: #d0d0d0;
         transition: 0.1s ease-in-out;
