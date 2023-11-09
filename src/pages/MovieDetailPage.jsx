@@ -35,7 +35,6 @@ export const MovieDetailPage = () => {
   if (error) {
     return <p>Error: {error}</p>;
   }
-  console.log(movieDetails);
   return (
     <>
       <Hero title={movieDetails.title} posterPath={movieDetails.poster_path} />
