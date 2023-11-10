@@ -33,6 +33,8 @@
 
   --main-width-mobile: 90%;
   --main-width-desktop: 70%;
+
+  --button-border-color: #a3a3a35a;
 }
 
 body {
@@ -62,8 +64,20 @@ ul li {
   list-style: none;
 }
 
+button {
+  border: none;
+  border-radius: 13px;
+  padding: var(--general-mini-padding) var(--general-smaller-margin);
+}
+
+.movieBtn {
+  background-color: transparent;
+  border: 1px solid var(--button-border-color);
+}
+
 /* NOT FOUND PAGE */
 .notFoundContainer {
+  background-image: url("./assets/placeholder.jpg");
   background-color: var(--bg-light);
   display: flex;
   flex-direction: column;
@@ -72,34 +86,35 @@ ul li {
   height: 100vh;
   padding: var(--general-padding);
   font-size: 2.3rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 50px #656565;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100vh;
+    background-color: var(--opacity-light);
+    position: absolute;
+  }
   p {
     font-weight: 900;
+    z-index: 1;
   }
   h1 {
     font-size: 1.3rem;
     text-transform: initial;
     text-align: center;
     font-weight: 500;
+    z-index: 1;
   }
+
   button {
-    padding: var(--general-mini-padding) var(--general-smaller-margin);
-    border-radius: 20px;
-    border: none;
-    margin: 20px auto;
-    font-weight: 600;
-    background: linear-gradient(
-        345deg,
-        #ff276f 0%,
-        #ff276f 33%,
-        rgba(255, 255, 255, 0) 66%,
-        rgba(255, 255, 255, 0) 100%
-      )
-      99% 50% / 400% 400%;
-    border: 2px solid transparent;
-    color: rgb(255, 255, 255);
-    overflow: hidden;
-    transition: all 0.5s ease 0s !important;
+    margin: 20px 0;
+    z-index: 1;
   }
+
   @media (min-width: 570px) {
     h1 {
       font-size: 2rem;

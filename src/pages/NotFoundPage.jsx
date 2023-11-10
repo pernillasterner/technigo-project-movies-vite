@@ -4,7 +4,7 @@ export const NotFoundPage = () => {
     <div className="notFoundContainer">
       <p>oops!</p>
       <h1>Looks like this link isn´t working.</h1>
-      <button>
+      <button className="movieBtn">
         <Link to={"/"}>🍿home</Link>
       </button>
     </div>
