@@ -6,13 +6,14 @@
     transform: rotate(360deg);
   }
 }
-.spinnder-container {
+.spinner-container {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   height: 100vh;
-  background: green;
+  opacity: 0.8;
+  z-index: 9999;
 }
 .loading-spinner {
   width: 50px;
