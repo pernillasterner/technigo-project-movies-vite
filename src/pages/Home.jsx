@@ -91,6 +91,19 @@ export const Home = () => {
     }
   }, [movies, genre, genreIdNumber]);
 
+  // Fetch details for the selected movie when its ID changes
+  useEffect(() => {
+    const fetchMovieDetailsById = async () => {
+      if (filteredMovies.length > 0) {
+        const movieId = filteredMovies[0].id;
+        const movieDetails = await fetchMovieDetails(movieId);
+        setDetails(movieDetails);
+      }
+    };
+
+    fetchMovieDetailsById();
+  }, [filteredMovies]);
+
   if (error) {
     return <p>Error: {error}</p>;
   }
