@@ -10,24 +10,32 @@ import { MovieList } from "../components/MovieList/MovieList";
 import { LoaderSpinner } from "../components/Loader/LoaderSpinner";
 
 export const Home = () => {
+  // Movie Related states
   const [movies, setMovies] = useState([]);
+  const [movieTitle, setMovieTitle] = useState("Oops! No Movies Found");
   const [details, setDetails] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [posterPath, setPosterPath] = useState("");
+
+  // Genre Related states
+  const [genre, setGenre] = useState("popular");
+  const { genre_id } = useParams();
+  const genreIdNumber = genre_id ? parseInt(genre_id, 10) : null;
+  const [genresList, setGenresList] = useState([]);
+
+  // Error and Loaders
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { genre = "popular", genre_id } = useParams();
-  const [movieTitle, setMovieTitle] = useState("Oops! No Movies Found");
-  const [posterPath, setPosterPath] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [popularMovies] = await Promise.all([
+        const [popularMovies, movieGenresList] = await Promise.all([
           fetchPopularMovies(),
           fetchGenresList(),
         ]);
-
         setMovies(popularMovies);
+        setGenresList(movieGenresList.genres);
 
         // Check if popularMovies is not empty and has a movie
         if (popularMovies.length > 0) {
@@ -51,26 +59,37 @@ export const Home = () => {
   }, [isLoading]);
 
   useEffect(() => {
+    if (genre_id) {
+      // Find the genre that matches the id number
+      const matchedGenre = genresList.find(
+        (genre) => genre.id === genreIdNumber
+      );
+
+      if (matchedGenre) {
+        setGenre(matchedGenre.name);
+      } else {
+        console.log("Sorry, genre not found");
+      }
+    }
+  }, [genre_id, genresList, genreIdNumber]);
+
+  useEffect(() => {
     if (genre === "popular") {
       setFilteredMovies(movies);
       // I only want to send in the first object
       setMovieTitle(movies[0]?.title);
       setPosterPath(movies[0]?.poster_path);
     } else {
-      const genreIdNumber = Number(genre_id);
       // Check if the genre_id matches id in movies list
       const updatedMovies = movies.filter((movie) =>
         movie.genre_ids.some((id) => id === genreIdNumber)
       );
+
       setFilteredMovies(updatedMovies);
       setMovieTitle(updatedMovies[0]?.title);
       setPosterPath(updatedMovies[0]?.poster_path);
     }
-  }, [movies, genre, genre_id]);
-
-  if (isLoading) {
-    return <LoaderSpinner />;
-  }
+  }, [movies, genre, genreIdNumber]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -78,8 +97,14 @@ export const Home = () => {
 
   return (
     <>
-      <Hero title={movieTitle} posterPath={posterPath} details={details} />
-      <MovieList movies={filteredMovies} genreTitle={genre} />
+      {isLoading ? (
+        <LoaderSpinner />
+      ) : (
+        <>
+          <Hero title={movieTitle} posterPath={posterPath} details={details} />
+          <MovieList movies={filteredMovies} genreTitle={genre} />
+        </>
+      )}
     </>
   );
 };
