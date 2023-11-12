@@ -75,15 +75,32 @@ button {
   border: 1px solid var(--button-border-color);
 }
 
+.placeholder {
+  background-image: url("./assets/placeholder.jpg");
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.8;
+}
+
 /* NOT FOUND PAGE */
 .notFoundContainer {
-  background-image: url("./assets/placeholder.jpg");
+  background-image: url("./assets/placeholder.jpg") !important;
   background-color: var(--bg-light);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100%;
   padding: var(--general-padding);
   font-size: 2.3rem;
   background-repeat: no-repeat;
