@@ -79,10 +79,7 @@ export const Header = () => {
               {/* Use NavLink to set clicked a tag to active */}
               {filteredGenres.map((genre) => (
                 <li className="dropdown-link" key={genre.id} id={genre.id}>
-                  <NavLink
-                    to={`/${genre.name.toLowerCase()}/${genre.id}`}
-                    onClick={handleDropdown}
-                  >
+                  <NavLink to={`/genre/${genre.id}`} onClick={handleDropdown}>
                     {genre.name}
                   </NavLink>
                 </li>
