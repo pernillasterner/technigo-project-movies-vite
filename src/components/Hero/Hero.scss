@@ -36,6 +36,7 @@
     flex-direction: column;
     align-items: center;
     padding: var(--general-padding);
+    z-index: 1;
 
     h1.movieTitle {
       text-align: center;
@@ -55,12 +56,13 @@
       a {
         z-index: 1;
         font-size: 0.8rem;
+        border-radius: 10px;
         padding: var(--general-mini-padding);
-        border: 1px solid #aaaaaa;
+        border: 1px solid #bdbdbd;
         margin: 0 0.5em;
-        color: #d0d0d0;
+        color: #fff;
         transition: 0.1s ease-in-out;
-        animation: blink 4s linear infinite;
+        // animation: blink 4s linear infinite;
         &:hover {
           font-weight: 600;
         }
@@ -78,7 +80,7 @@
       }
 
       .genres {
-        margin-top: 20px;
+        margin-top: 50px;
         a {
           margin: 1em;
           font-size: 1rem;
