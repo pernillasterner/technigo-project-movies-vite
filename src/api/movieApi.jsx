@@ -6,6 +6,7 @@ const API_LANG = "&language=en-US&page=1";
 const IMAGE__URL = "https://api.themoviedb.org/3/configuration";
 const DETAILS__URL = "https://api.themoviedb.org/3/movie/";
 const GENRES__URL = "https://api.themoviedb.org/3/genre/movie/list";
+const COMPANY__URL = "https://api.themoviedb.org/3/company/";
 
 export const fetchPopularMovies = async () => {
   const url = `${BASE__URL}${API_KEY}${API_LANG}`;
@@ -49,6 +50,19 @@ export const fetchMovieDetails = async (movie_id) => {
 // GENRES -> Details of popular movies
 export const fetchGenresList = async () => {
   const url = `${GENRES__URL}${API_KEY}`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error("Error fetching genres", err);
+    throw err;
+  }
+};
+
+// COMPANY -> Production details
+export const fetchCompanyDetails = async (companyId) => {
+  const url = `${COMPANY__URL}${companyId}${API_KEY}`;
   try {
     const res = await fetch(url);
     const data = await res.json();
