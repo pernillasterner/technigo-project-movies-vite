@@ -24,7 +24,9 @@ npm i && code . && npm run dev
 
 ### The Problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+#### Development Process:
+
+I set up the basic project structure, implemented routing using React Router, and created placeholder components for each page. I used Git for version control and implemented loading spinners and error messages to provide a better experience for the users during data fetching.
 
 ### View it live
 
