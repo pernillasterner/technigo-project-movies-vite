@@ -104,10 +104,6 @@ export const Home = () => {
     fetchMovieDetailsById();
   }, [filteredMovies]);
 
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
   return (
     <>
       {isLoading ? (
