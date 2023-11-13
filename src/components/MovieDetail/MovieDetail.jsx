@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchCompanyDetails } from "../../api/movieApi";
-import { LoaderSpinner, LoadingSpinner } from "../Loader/LoaderSpinner";
+import { LoaderSpinner } from "../Loader/LoaderSpinner";
 import "./MovieDetail.scss";
 
 export const MovieDetail = ({ movie }) => {
