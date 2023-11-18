@@ -5,7 +5,6 @@ import {
   fetchMovieDetails,
   fetchGenresList,
 } from "../api/movieApi";
-// import { Redirect } from "react-router-dom";
 import { Hero } from "../components/Hero/Hero";
 import { MovieList } from "../components/MovieList/MovieList";
 import { LoaderSpinner } from "../components/Loader/LoaderSpinner";
@@ -71,8 +70,6 @@ export const Home = () => {
       } else {
         console.log("Sorry, genre not found");
       }
-    } else if (genre_id === undefined) {
-      // <Redirect to="/" />;
     }
   }, [genre_id, genresList, genreIdNumber]);
 
