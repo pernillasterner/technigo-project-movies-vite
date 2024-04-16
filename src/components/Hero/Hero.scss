@@ -51,15 +51,17 @@
     }
 
     .genres {
-      // position: absolute;
-      // bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
       a {
         z-index: 1;
         font-size: 0.8rem;
         border-radius: 10px;
         padding: var(--general-mini-padding);
         border: 1px solid #bdbdbd;
-        margin: 0 0.5em;
+        margin: 0.5em;
         color: #fff;
         transition: 0.1s ease-in-out;
         // animation: blink 4s linear infinite;
